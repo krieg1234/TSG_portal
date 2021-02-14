@@ -1,8 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './css/style.css';
 import { useSelector } from 'react-redux';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import { selectPage } from './appSlice';
 
@@ -25,10 +25,13 @@ function App() {
   return (
     <div className="App">
       <Container fluid>
-        <NavbarComponent />
+        <Row>
+          <Col md={2}>
+            <NavbarComponent />
+          </Col>
+          <Col>{pages[currentPage]}</Col>
+        </Row>
       </Container>
-
-      <Container>{pages[currentPage]}</Container>
     </div>
   );
 }

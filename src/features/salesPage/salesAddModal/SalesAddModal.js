@@ -9,7 +9,10 @@ export function SalesAddModal(props) {
   const { allCategoryes, categoryesById } = useSelector(selectSales);
   const dispath = useDispatch();
   const [saleData, setSaleData] = useState(
-    Sale.allFields.reduce((acc, f) => ({ ...acc, [f]: '' }), {})
+    Sale.allFields.reduce((acc, f) => {
+      if (f === Sale.categoryIdField) return { ...acc, [f]: 0 };
+      return { ...acc, [f]: '' };
+    }, {})
   );
 
   const createInput = (field, type, placeholder, as = 'input') => {

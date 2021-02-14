@@ -48,6 +48,10 @@ const salesSlice = createSlice({
     },
     allSales: [100, 200, 300],
     categoryesById: {
+      0: {
+        id: 0,
+        name: 'Все',
+      },
       1: {
         id: 1,
         name: 'Строительные материалы',
@@ -61,7 +65,7 @@ const salesSlice = createSlice({
         name: 'Инструменты',
       },
     },
-    allCategoryes: [1, 2, 3],
+    allCategoryes: [0, 1, 2, 3],
   },
   reducers: {
     addSale: (state, { payload }) => {

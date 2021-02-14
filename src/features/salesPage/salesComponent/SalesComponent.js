@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from 'react-bootstrap';
 
 export function ListSalesComponent(props) {
   const { header, content, price, author, phone, email } = props.salesItem;
   const { category } = props;
   return (
-    <div>
+    <div className="list-sales-component" style={{ flexBasis: '100%' }}>
       <h3>{header}</h3>
       <p>Категория: {category}</p>
       <br />
@@ -26,7 +26,15 @@ export function CardSalesComponent(props) {
   const isExpanded = currentSale === id;
   return (
     <Card
-      style={{ width: '18rem',  }}
+      style={{
+        width: '18rem',
+        height: isExpanded ? 'auto' : '12rem',
+
+        boxShadow: isExpanded ? '0 0 2rem rgba(0,0,0,0.5)' : 'none',
+        margin: '1rem',
+        border: '2px solid green',
+        borderRadius: '4px',
+      }}
       onClick={() => setCurrentSale(isExpanded ? null : id)}
     >
       <Card.Body>

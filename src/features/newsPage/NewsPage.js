@@ -17,11 +17,9 @@ export function NewsPage() {
   });
   return (
     <div className="newsPage">
-      <h1>Новости</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-        iure, nulla saepe dolore minima placeat. Velit incidunt mollitia quos
-        est.
+      <h1 className="page-header">Новости</h1>
+      <p className="page-discripion">
+        В это разделе Вы можете ознакомиться с важными новостями нашего дома.
       </p>
       <Button variant="primary" onClick={() => setNewsAddModalShow(true)}>
         Добавить новость

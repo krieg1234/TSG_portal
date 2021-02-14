@@ -19,10 +19,19 @@ const displayModes = {
   list: {
     title: 'Списком',
     salesComponent: ListSalesComponent,
+    containerStyle: {
+      display: 'block',
+    },
   },
   cards: {
     title: 'Карточками',
     salesComponent: CardSalesComponent,
+    containerStyle: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      position: 'relative',
+    },
   },
 };
 const sortModes = {
