@@ -1,4 +1,7 @@
 export const salesFilter = (saleItem, filters) => {
+  if (!saleItem) {
+    return false
+  }
   const { header, content, price, categoryId } = saleItem;
   const { currentCategory, priceRange, textFilter } = filters;
   if (currentCategory) {

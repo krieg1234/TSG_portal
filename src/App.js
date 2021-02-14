@@ -26,7 +26,7 @@ function App() {
     <div className="App">
       <Container fluid>
         <Row>
-          <Col md={2}>
+          <Col md={4}>
             <NavbarComponent />
           </Col>
           <Col>{pages[currentPage]}</Col>

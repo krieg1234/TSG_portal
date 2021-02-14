@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectSales } from './salesSlice';
+import React, { useState,useEffect } from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+import { selectSales, fetchSales} from './salesSlice';
 
-import { Accordion, Button } from 'react-bootstrap';
+import { Accordion, Button, Pagination } from 'react-bootstrap';
 
 import { salesFilter } from './functions/salesFilter';
 
 import { FilterBar, getDefaultOptions } from './filterBar/FilterBar';
 import { SalesAddModal } from './salesAddModal/SalesAddModal';
+import {PaginationComponent} from './paginationComponent/PaginationComponent'
 
-export function SalesPage() {
+export function  SalesPage() { 
+  
   console.log('Render SalesPage');
+  const dispatch=useDispatch();
   const { allSales, salesById, allCategoryes, categoryesById } = useSelector(
     selectSales
   );
+ 
   const {
     defaultDisplayMode,
     defaultSortMode,
@@ -26,8 +30,46 @@ export function SalesPage() {
   const [textFilter, setTextFilter] = useState('');
   const [modalShow, setModalShow] = useState(false);
   const [currentSale, setCurrentSale] = useState(null);
-  const filters = { currentCategory, priceRange, textFilter, sortMode };
+  
 
+  const filters = { currentCategory, priceRange, textFilter, sortMode };
+  const filtredSales=allSales.filter((s) => salesFilter(salesById[s], filters));
+
+  const [currentPage, setCurrentPage]=useState(1);
+  const pageCount=filtredSales.length/20;
+ 
+
+
+  const salesStatus=useSelector(state=>state.sales.status);
+  const error=useSelector(state=>state.sales.error);
+  
+  const contentByStatus={
+    'loading':(<div>Загрузка...</div>),
+    'failed':(<div>Что-то пошло не так...{error}</div>),
+    'success': (filtredSales
+      .filter((s,index)=>{
+        const isInRange=(index>=currentPage*20-20) && (index<currentPage*20)
+        return (isInRange)})
+      .map((s) => {
+       const  category = categoryesById[salesById[s].categoryId].name;
+       return displayMode.salesComponent({
+          key: salesById[s].id,
+          salesItem: salesById[s],
+          category: category,
+          setCurrentSale: setCurrentSale,
+          currentSale: currentSale,
+        });
+      })),
+  };
+
+  
+
+  useEffect(()=>{
+    if (salesStatus==='idle'){
+      dispatch(fetchSales())
+    }
+  },[salesStatus,dispatch]);
+   
   return (
     <div className="salesPage">
       <h1 className="page-header">Доска объявлений</h1>
@@ -60,22 +102,12 @@ export function SalesPage() {
       </Accordion>
 
       <hr />
-      {console.log(displayMode.containerStyle)}
-      <div className="saleComponents" style={displayMode.containerStyle}>
-        {allSales
-          .filter((s) => salesFilter(salesById[s], filters))
-          .map((s) => {
-            const category = categoryesById[salesById[s].categoryId].name;
-
-            return displayMode.salesComponent({
-              key: salesById[s].id,
-              salesItem: salesById[s],
-              category: category,
-              setCurrentSale: setCurrentSale,
-              currentSale: currentSale,
-            });
-          })}
+      
+      <div id="saleComponents" style={displayMode.containerStyle}>
+        {contentByStatus[salesStatus]}
       </div>
+
+<PaginationComponent pageCount={pageCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       {modalShow ? (
         <SalesAddModal show={modalShow} onHide={() => setModalShow(false)} />

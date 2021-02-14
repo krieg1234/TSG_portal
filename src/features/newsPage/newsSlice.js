@@ -1,36 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { omit } from 'lodash';
+
+export const fetchNews=createAsyncThunk('news/fetchedNews',async ()=>{
+    const response=await fetch('https://jsonplaceholder.typicode.com/posts');
+  const json=await response.json();   
+  return  json;
+})
+
 export const newsSlice = createSlice({
   name: 'news',
-  initialState: {
-    newsById: {
-      1: {
-        id: 1,
-        header: 'Новость 1',
-        content:
-          '1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum explicabo dolores nam quos optio nisi?',
-      },
-      2: {
-        id: 2,
-        header: 'Новость 2',
-        content:
-          '2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum explicabo dolores nam quos optio nisi?',
-      },
-      3: {
-        id: 3,
-        header: 'Новость 3',
-        content:
-          '3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum explicabo dolores nam quos optio nisi?',
-      },
-    },
-    allNews: [1, 2, 3],
+  initialState:{
+    newsById:{},
+    allNews:[],
+    status:'idle',
+    error:null
   },
   reducers: {
     addNews: (state, { payload }) => {
       const newNews = {
         id: Date.now().toString(),
-        header: payload.header,
-        content: payload.content,
+        title: payload.header,
+        body: payload.content,
       };
       return {
         ...state,
@@ -54,6 +44,21 @@ export const newsSlice = createSlice({
       return { ...state, newsById: { ...state.newsById, [id]: editedNews } };
     },
   },
+  extraReducers:{
+    [fetchNews.pending]:(state,{payload})=>{
+      state.status='loading';
+    },
+    [fetchNews.fulfilled]:(state,{payload})=>{
+      
+      state.status='success';
+      state.allNews=Object.keys(payload);
+      state.newsById=payload;
+    },
+    [fetchNews.rejected]:(state,{error})=>{
+      state.status='failed';
+      state.error=error.message;
+    }
+  }
 });
 
 export const { deleteNews, addNews, editNews } = newsSlice.actions;
@@ -61,3 +66,5 @@ export const selectNews = (state) => {
   return { ...state.news };
 };
 export default newsSlice.reducer;
+
+

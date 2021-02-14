@@ -6,7 +6,7 @@ import { editNews } from '../newsSlice';
 export function NewsEditModal(props) {
   const dispatch = useDispatch();
   const { data, setNewsEditModalData, onHide } = props;
-  const { header, content } = data;
+  const { title, body } = data;
   return (
     <Modal
       {...props}
@@ -25,11 +25,11 @@ export function NewsEditModal(props) {
             <Form.Label>Заголовок новости</Form.Label>
             <Form.Control
               type="newsHeader"
-              value={header}
+              value={title}
               onChange={(e) => {
                 setNewsEditModalData({
                   ...data,
-                  header: e.target.value,
+                  title: e.target.value,
                 });
               }}
               placeholder="Введите заголовок"
@@ -42,11 +42,11 @@ export function NewsEditModal(props) {
               as="textarea"
               rows={5}
               type="newsContent"
-              value={content}
+              value={body}
               onChange={(e) => {
                 setNewsEditModalData({
                   ...data,
-                  content: e.target.value,
+                  body: e.target.value,
                 });
               }}
               placeholder="Введите содержание Вашей новости"
