@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addNews } from '../newsSlice';
-
+//пустое модальное окно для добавления новости
 export function NewsAddModal(props) {
   const [header, headerInputHandler] = useState('');
   const [content, contentInputHandler] = useState('');
@@ -49,7 +49,7 @@ export function NewsAddModal(props) {
             variant="primary"
             onClick={() => {
               dispatch(addNews({ header, content }));
-              headerInputHandler('');
+              headerInputHandler(''); //очистить поля после закрытия окна
               contentInputHandler('');
               props.onHide();
             }}

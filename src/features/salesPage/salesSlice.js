@@ -1,16 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { sortBy, } from 'lodash';
 import { Sale } from './Sale';
-
+//асинхронный запрос перечня объявлений
 export const fetchSales=createAsyncThunk('sales/fetchedSales', async ()=>{
   console.log('call fetchSales')
   const responce=await fetch('https://jsonplaceholder.typicode.com/comments');
   const json=await responce.json();
   
+  //привдения структры данных с сервера к структуре стора и атрибутов компонентов
   const normalyzedData=json.map(s=>{
-    
-    const newElement={
-      id:s.id,
+        const newElement={
+      id:String(s.id),
       header:`${s.id}. ${s.name}`,
       author:'krieg1234',
       price:Math.round(Math.random()*10000) ,
@@ -21,7 +21,7 @@ export const fetchSales=createAsyncThunk('sales/fetchedSales', async ()=>{
     }
     return newElement;
   });
-  return normalyzedData;
+  return normalyzedData.filter((s,index)=>index<10);
 })
 
 const salesSlice = createSlice({
@@ -31,7 +31,7 @@ const salesSlice = createSlice({
     allSales:[],
     status:'idle',
     error:null,
-    categoryesById: {
+    categoryesById: { //перечень категорий объявлений
       0: {
         id: 0,
         name: 'Не указано',
@@ -66,7 +66,7 @@ const salesSlice = createSlice({
         categoryId,
         price,
       } = payload;
-      const newSale = new Sale();
+      const newSale = new Sale(); //переделать на обычный объект, ругается на несериализуемый элемент стора
       newSale.setHeader(header);
       newSale.setAuthor(author);
       newSale.setEmail(email);
@@ -74,22 +74,15 @@ const salesSlice = createSlice({
       newSale.setContent(content);
       newSale.setCategoryId(categoryId);
       newSale.setPrice(price);
-      console.log(newSale);
+      console.log('ADD SALE',newSale);
       return {
         ...state,
         allSales: [...state.allSales, newSale.id],
         salesById: { ...state.salesById, [newSale.id]: newSale },
       };
     },
-    removeSale: (state, { payload }) => {
-      return state;
-    },
-    editSale: (state, { payload }) => {
-      return state;
-    },
     sortSales: (state, { payload }) => {
-      console.log('\nСортируем...');
-     
+      console.log('\nСортируем...');     
       const { isDirected, field } = payload;
       const sortedSales = sortBy(state.allSales, [
         (saleId) => (state.salesById[saleId][field ? field : 'price']),
@@ -104,7 +97,7 @@ const salesSlice = createSlice({
       return state;
     },
   },
-  extraReducers:{
+  extraReducers:{ //отслеживание состояния асинхронной запроса
     [fetchSales.pending]:(state)=>{
       state.status='loading'
     },
@@ -130,47 +123,3 @@ export const selectSales = (state) => {
 
 export default salesSlice.reducer;
 
-
-
-// salesById: {
-    //   100: {
-    //     id: 100,
-    //     header: 'Объявление 1',
-    //     author: 'krieg1234',
-    //     price: 1000,
-
-    //     email: 'olegkrieg@gmail.com',
-    //     phone: '+79096669530',
-
-    //     categoryId: 2,
-    //     content:
-    //       '1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum explicabo dolores nam quos optio nisi?',
-    //   },
-    //   200: {
-    //     id: 200,
-    //     header: 'Объявление 2',
-    //     author: 'olegkrieg',
-    //     price: 2000,
-
-    //     email: 'krieg@gmail.com',
-    //     phone: '+76669996699',
-
-    //     categoryId: 1,
-    //     content:
-    //       '2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum explicabo dolores nam quos optio nisi?',
-    //   },
-    //   300: {
-    //     id: 300,
-    //     header: 'Объявление 3',
-    //     author: 'krieg1234',
-    //     price: 666,
-
-    //     email: 'olegkrieg@gmail.com',
-    //     phone: '+79096669530',
-
-    //     categoryId: 1,
-    //     content:
-    //       '3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum explicabo dolores nam quos optio nisi?',
-    //   },
-    // },
-    // allSales: [100, 200, 300],

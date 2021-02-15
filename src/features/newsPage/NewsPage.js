@@ -3,23 +3,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectNews, fetchNews } from './newsSlice';
 
 import { NewsComponents } from './newsComponent/NewsComponents';
-import { Button } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { NewsAddModal } from './newsAddModal/NewsAddModal';
 import { NewsEditModal } from './newsEditModal/NewsEditModal';
 
 export function NewsPage() {
   const dispatch=useDispatch()
+  //селектор для всех новостей из стора
   const { allNews, newsById } = useSelector(selectNews);
+
+  //хуки для управления модальными окнами
   const [newsAddModalShow, setNewsAddModalShow] = useState(false);
   const [newsEditModalShow, setNewsEditModalShow] = useState(false);
+  //хук для данных в полях ввода в модальных окнах
   const [newsEditModalData, setNewsEditModalData] = useState({
     id: '',
     title: '',
     body: '',
   });
-
+//селекторы для асинхронного запроса
   const newStatus=useSelector(state=>state.news.status);
   const error=useSelector(state=>state.news.error);
+  //блок новостей, в зависимости от статуса запроса
   const contentByStatus={
     'loading':(<div>Загрузка...</div>),
     'failed':(<div>Что-то пошло не так...{error}</div>),
@@ -39,6 +44,7 @@ export function NewsPage() {
       );
     }))
   }
+  //выполняем запрос на сервер только при первой загрузке
   useEffect(()=>{
     if (newStatus==='idle'){
       dispatch(fetchNews())
@@ -46,7 +52,8 @@ export function NewsPage() {
   },[newStatus,dispatch])
 
   return (
-    <div className="newsPage">
+    <Container>
+<div className="newsPage">
       <h1 className="page-header">Новости</h1>
       <p className="page-discripion">
         В это разделе Вы можете ознакомиться с важными новостями нашего дома.
@@ -63,10 +70,13 @@ export function NewsPage() {
       />
       <NewsEditModal
         show={newsEditModalShow}
-        data={newsEditModalData}
-        setNewsEditModalData={setNewsEditModalData}
+        data={newsEditModalData} //данные для заполнения данных в полях ввода
+        setNewsEditModalData={setNewsEditModalData} //хук для изменения данных в модальном окне
         onHide={() => setNewsEditModalShow(false)}
       />
     </div>
+
+    </Container>
+    
   );
 }

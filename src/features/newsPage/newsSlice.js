@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { omit } from 'lodash';
-
+//асинхронный запрос новостей
 export const fetchNews=createAsyncThunk('news/fetchedNews',async ()=>{
     const response=await fetch('https://jsonplaceholder.typicode.com/posts');
   const json=await response.json();   
-  return  json;
+  return  json.filter((n,index)=>index<20);
 })
 
 export const newsSlice = createSlice({
@@ -44,7 +44,7 @@ export const newsSlice = createSlice({
       return { ...state, newsById: { ...state.newsById, [id]: editedNews } };
     },
   },
-  extraReducers:{
+  extraReducers:{ //для работы с асинхронным запросом
     [fetchNews.pending]:(state,{payload})=>{
       state.status='loading';
     },

@@ -2,7 +2,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { editNews } from '../newsSlice';
-
+//модальное окно редактирования новости
 export function NewsEditModal(props) {
   const dispatch = useDispatch();
   const { data, setNewsEditModalData, onHide } = props;

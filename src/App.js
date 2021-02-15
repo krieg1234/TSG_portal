@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/style.css';
 import { useSelector } from 'react-redux';
-import { Col, Container, Row } from 'react-bootstrap';
+import {  Container } from 'react-bootstrap';
 
 import { selectPage } from './appSlice';
 
@@ -25,12 +25,8 @@ function App() {
   return (
     <div className="App">
       <Container fluid>
-        <Row>
-          <Col md={4}>
-            <NavbarComponent />
-          </Col>
-          <Col>{pages[currentPage]}</Col>
-        </Row>
+        <NavbarComponent />
+        {pages[currentPage]}
       </Container>
     </div>
   );

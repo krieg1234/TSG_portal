@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { deleteNews } from '../newsSlice';
 export function NewsComponents(props) {
@@ -12,12 +12,16 @@ export function NewsComponents(props) {
     content,
   } = props;
   return (
-    <div className="">
-      <h3>{header}</h3>
-      <p>{content}</p>
-      <Button
-        size="sm"
+    <div className="newsComponent" style={{margin:'1rem',padding:'1rem',border:'2px solid green', borderRadius:'25px'}}>
+      <Row>
+       <Col md={9}>
+       <h3>{header}</h3>
+      <p>{content}</p></Col>
+       <Col md={3}>
+       <Button
+        size="md"
         variant="warning"
+        style={{width:'10rem', marginBottom:'1rem'}}
         onClick={() => {
           setNewsEditModalData();
           setNewsEditModalShow(true);
@@ -26,12 +30,16 @@ export function NewsComponents(props) {
         Редактировать
       </Button>
       <Button
-        size="sm"
+        size="md"
         variant="danger"
+        style={{width:'10rem'}}
         onClick={() => dispatch(deleteNews({ id }))}
       >
         Удалить
-      </Button>
+      </Button></Col>
+      </Row>
+      
+      
     </div>
   );
 }

@@ -6,8 +6,8 @@ import salesReducer from '../features/salesPage/salesSlice';
 
 export default configureStore({
   reducer: {
-    app: appReducer,
-    news: newsReducer,
-    sales: salesReducer,
+    app: appReducer, //обищие
+    news: newsReducer, //новости
+    sales: salesReducer, //объявления
   },
 });

@@ -1,6 +1,7 @@
-import { uniqueId } from 'lodash';
+
 
 export class Sale {
+  //поля объявлений, что-бы не запутаться
   static headerField = 'header';
   static authorField = 'author';
   static priceField = 'price';
@@ -26,14 +27,13 @@ export class Sale {
       });
     }
 
-    this.date = new Date();
-    this.id = uniqueId();
+    this.id = new Date().toString();
   }
-
+//гетеры полей, по-хорошему нужно прописать для всех полей
   getId() {
     return this.id;
   }
-
+//сетеры полей
   setHeader(header) {
     this.header = header;
   }

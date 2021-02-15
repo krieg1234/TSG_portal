@@ -3,19 +3,18 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSales, addSale } from '../salesSlice';
 import { Sale } from '../Sale';
-
+//модальное окно для добавления объявления, надо бы ещё возможность редактирования сюда-же прописать
 export function SalesAddModal(props) {
-  console.log('Render SalesModal');
   const { allCategoryes, categoryesById } = useSelector(selectSales);
   const dispath = useDispatch();
   const [saleData, setSaleData] = useState(
-    Sale.allFields.reduce((acc, f) => {
+    Sale.allFields.reduce((acc, f) => { //формирование названия полей по умолячанию
       if (f === Sale.categoryIdField) return { ...acc, [f]: 0 };
       return { ...acc, [f]: '' };
     }, {})
   );
 
-  const createInput = (field, type, placeholder, as = 'input') => {
+  const createInput = (field, type, placeholder, as = 'input') => { //для рендера однотипных инпутов
     return (
       <Form.Control
         type={type}

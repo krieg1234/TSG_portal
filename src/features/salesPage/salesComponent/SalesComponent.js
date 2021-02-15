@@ -1,16 +1,16 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-
-export function ListSalesComponent(props) {
+//компонент объявления, тип определяется в зависимости от настроек
+export function ListSalesComponent(props) { //в виде списка
   const { header, content, price, author, phone, email } = props.salesItem;
   const { category } = props;
   return (
-    <div className="list-sales-component" style={{ flexBasis: '100%' }}>
+    <div className="list-sales-component" style={{ flexBasis: '100%', margin:'1rem',padding:'1rem',border:'2px solid green', borderRadius:'25px' }} >
       <h3>{header}</h3>
       <p>Категория: {category}</p>
       <br />
       <p>{content}</p>
-      <p>Цена: {price} руб.</p>
+      <h3>Цена: {price} руб.</h3>
       <br />
       <p>Автор: {author} </p>
       <p>
@@ -20,10 +20,10 @@ export function ListSalesComponent(props) {
   );
 }
 
-export function CardSalesComponent(props) {
+export function CardSalesComponent(props) { //в виде карточек
   const { id, header, content, price, author, phone, email } = props.salesItem;
   const { category, setCurrentSale, currentSale } = props;
-  const isExpanded = currentSale === id;
+  const isExpanded = currentSale === id; //для раскрытия карточки
   return (
     <Card
       style={{

@@ -1,7 +1,9 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 export function MainPage() {
   return (
+    <Container>
     <div className="mainPage">
       <h1 className="page-header">Главная</h1>
       <p className="page-discripion">
@@ -66,5 +68,7 @@ export function MainPage() {
         </div>
       </div>
     </div>
+    </Container>
+    
   );
 }

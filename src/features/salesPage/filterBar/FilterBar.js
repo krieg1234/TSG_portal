@@ -14,8 +14,8 @@ import {
   FormControl,
   Dropdown,
 } from 'react-bootstrap';
-
-const displayModes = {
+//компонент для настройки списка объявлений и задания фильтров
+const displayModes = { //режим отображения списка
   list: {
     title: 'Списком',
     salesComponent: ListSalesComponent,
@@ -34,7 +34,7 @@ const displayModes = {
     },
   },
 };
-const sortModes = {
+const sortModes = { //варианты сортировки
   directPrice: {
     title: 'По возрастанию',
     isDirected: true,
@@ -47,7 +47,7 @@ const sortModes = {
   },
 };
 
-export const getDefaultOptions = () => ({
+export const getDefaultOptions = () => ({ //настройки по умолчанию
   defaultDisplayMode: displayModes.list,
   defaultSortMode: sortModes.direct,
   defaultPriceRange: [0, Infinity],
@@ -72,7 +72,9 @@ export function FilterBar(props) {
   const [
     defLowerPriceLimit,
     defUpperPriceLimit,
-  ] = getDefaultOptions().defaultPriceRange;
+  ] = getDefaultOptions().defaultPriceRange; //получаем обнуленные значения диапозона цен
+
+  //хуки для филльров по цене и тексту, остальные определены в родителе
   const [lowerPriceLimit, setLowerPriceLimit] = useState(defLowerPriceLimit);
   const [upperPriceLimit, setUpperPriceLimit] = useState(defUpperPriceLimit);
   const [textFilterInputValue, setTextFilterInputValue] = useState('');

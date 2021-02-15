@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { switchPage } from '../../appSlice';
-
+//панель навигации
 export function NavbarComponent() {
   const dispatch = useDispatch();
 
@@ -11,12 +11,12 @@ export function NavbarComponent() {
       bg="light"
       expand="md"
       className="sidebar"
-      style={{ flexDirection: 'column', position: 'fixed', height: '100%' }}
+     
     >
       <Navbar.Brand>ТСЖ "Новый бульвар 2"</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ flexDirection: 'column' }} className="mr-auto">
+        <Nav  className="mr-auto">
           <Nav.Link onClick={() => dispatch(switchPage('MainPage'))}>
             Главная
           </Nav.Link>
@@ -29,9 +29,6 @@ export function NavbarComponent() {
             Объявления
           </Nav.Link>
 
-          <Nav.Link onClick={() => dispatch(switchPage('ContactsPage'))}>
-            Контакты
-          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
