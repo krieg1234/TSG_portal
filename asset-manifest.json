@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/TSG_portal/static/css/main.8bd60ff3.chunk.css",
-    "main.js": "/TSG_portal/static/js/main.bf1b239c.chunk.js",
-    "main.js.map": "/TSG_portal/static/js/main.bf1b239c.chunk.js.map",
+    "main.js": "/TSG_portal/static/js/main.04161629.chunk.js",
+    "main.js.map": "/TSG_portal/static/js/main.04161629.chunk.js.map",
     "runtime-main.js": "/TSG_portal/static/js/runtime-main.7338a362.js",
     "runtime-main.js.map": "/TSG_portal/static/js/runtime-main.7338a362.js.map",
     "static/css/2.150d169a.chunk.css": "/TSG_portal/static/css/2.150d169a.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.150d169a.chunk.css",
     "static/js/2.f6f5a8ff.chunk.js",
     "static/css/main.8bd60ff3.chunk.css",
-    "static/js/main.bf1b239c.chunk.js"
+    "static/js/main.04161629.chunk.js"
   ]
 }
