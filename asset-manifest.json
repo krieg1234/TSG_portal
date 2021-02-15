@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/TSG_portal/static/css/main.8bd60ff3.chunk.css",
+    "main.js": "/TSG_portal/static/js/main.bf1b239c.chunk.js",
+    "main.js.map": "/TSG_portal/static/js/main.bf1b239c.chunk.js.map",
+    "runtime-main.js": "/TSG_portal/static/js/runtime-main.7338a362.js",
+    "runtime-main.js.map": "/TSG_portal/static/js/runtime-main.7338a362.js.map",
+    "static/css/2.150d169a.chunk.css": "/TSG_portal/static/css/2.150d169a.chunk.css",
+    "static/js/2.f6f5a8ff.chunk.js": "/TSG_portal/static/js/2.f6f5a8ff.chunk.js",
+    "static/js/2.f6f5a8ff.chunk.js.map": "/TSG_portal/static/js/2.f6f5a8ff.chunk.js.map",
+    "index.html": "/TSG_portal/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/TSG_portal/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.8bd60ff3.chunk.css.map": "/TSG_portal/static/css/main.8bd60ff3.chunk.css.map",
+    "static/js/2.f6f5a8ff.chunk.js.LICENSE.txt": "/TSG_portal/static/js/2.f6f5a8ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7338a362.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.f6f5a8ff.chunk.js",
+    "static/css/main.8bd60ff3.chunk.css",
+    "static/js/main.bf1b239c.chunk.js"
+  ]
+}
