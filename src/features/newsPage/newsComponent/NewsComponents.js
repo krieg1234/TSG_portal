@@ -21,7 +21,7 @@ export function NewsComponents(props) {
        <Button
         size="md"
         variant="warning"
-        style={{width:'10rem', marginBottom:'1rem'}}
+        style={{width:'10rem', margin:'1rem'}}
         onClick={() => {
           setNewsEditModalData();
           setNewsEditModalShow(true);
@@ -32,7 +32,7 @@ export function NewsComponents(props) {
       <Button
         size="md"
         variant="danger"
-        style={{width:'10rem'}}
+        style={{width:'10rem', margin:'1rem'}}
         onClick={() => dispatch(deleteNews({ id }))}
       >
         Удалить

@@ -21,7 +21,7 @@ export const fetchSales=createAsyncThunk('sales/fetchedSales', async ()=>{
     }
     return newElement;
   });
-  return normalyzedData.filter((s,index)=>index<10);
+  return normalyzedData;
 })
 
 const salesSlice = createSlice({
