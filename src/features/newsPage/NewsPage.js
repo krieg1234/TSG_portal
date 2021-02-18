@@ -29,6 +29,7 @@ export function NewsPage() {
     'loading':(<div>Загрузка...</div>),
     'failed':(<div>Что-то пошло не так...{error}</div>),
     'success':(allNews.map((n) => {
+      if(!newsById[n]) return null;
       const { id, title, body } = newsById[n];
       return (
         <NewsComponents

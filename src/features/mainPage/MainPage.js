@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import './style.css';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export function MainPage() {
   return (
@@ -10,19 +11,15 @@ export function MainPage() {
         Добро пожаловать на портал товарищества собстевенников жилья по адресу
         г. Долгопрудный, ул. Новый бульвар, д.2.
       </p>
-      <div className="map">
-        <a
-          href="https://yandex.ru/maps/?um=constructor%3Aed6ebfebb2a8bc7d405c66ce5062950f3205fcb70bc058199addb9277424bff0&amp;source=constructorStatic"
-          target="_blank"
-        >
-          <img
-            src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3Aed6ebfebb2a8bc7d405c66ce5062950f3205fcb70bc058199addb9277424bff0&amp;width=500&amp;height=400&amp;lang=ru_RU"
-            alt=""
-          />
-        </a>
-      </div>
       <hr />
-      <div className="contacts">
+      <Row>
+        <Col xl={6}>
+        <div className="map">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aed6ebfebb2a8bc7d405c66ce5062950f3205fcb70bc058199addb9277424bff0&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+      </div>
+        </Col>
+        <Col xl={6}>
+        <div className="contacts">
         <h2>Наши контакты</h2>
         <div className="contacts-block">
           <h4>Председатель товарищества</h4>
@@ -41,6 +38,11 @@ export function MainPage() {
           <a className="email">olegkrieg@gmail.com</a>
         </div>
       </div>
+        </Col>
+      </Row>
+      
+     
+      
       <hr />
       <div className="contacts">
         <h2>Полезные ссылки</h2>

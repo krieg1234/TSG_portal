@@ -51,8 +51,9 @@ export const newsSlice = createSlice({
     [fetchNews.fulfilled]:(state,{payload})=>{
       
       state.status='success';
-      state.allNews=Object.keys(payload);
-      state.newsById=payload;
+      const newNews=payload.reduce((acc,n)=>({...acc,[n.id]:n}),{});
+      state.allNews=Object.keys(newNews);
+      state.newsById=newNews;
     },
     [fetchNews.rejected]:(state,{error})=>{
       state.status='failed';
