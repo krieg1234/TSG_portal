@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/TSG_portal/static/css/main.8bd60ff3.chunk.css",
-    "main.js": "/TSG_portal/static/js/main.04161629.chunk.js",
-    "main.js.map": "/TSG_portal/static/js/main.04161629.chunk.js.map",
+    "main.css": "/TSG_portal/static/css/main.0c1a7e5c.chunk.css",
+    "main.js": "/TSG_portal/static/js/main.7c57b174.chunk.js",
+    "main.js.map": "/TSG_portal/static/js/main.7c57b174.chunk.js.map",
     "runtime-main.js": "/TSG_portal/static/js/runtime-main.7338a362.js",
     "runtime-main.js.map": "/TSG_portal/static/js/runtime-main.7338a362.js.map",
     "static/css/2.150d169a.chunk.css": "/TSG_portal/static/css/2.150d169a.chunk.css",
-    "static/js/2.f6f5a8ff.chunk.js": "/TSG_portal/static/js/2.f6f5a8ff.chunk.js",
-    "static/js/2.f6f5a8ff.chunk.js.map": "/TSG_portal/static/js/2.f6f5a8ff.chunk.js.map",
+    "static/js/2.ce1b69e0.chunk.js": "/TSG_portal/static/js/2.ce1b69e0.chunk.js",
+    "static/js/2.ce1b69e0.chunk.js.map": "/TSG_portal/static/js/2.ce1b69e0.chunk.js.map",
     "index.html": "/TSG_portal/index.html",
     "static/css/2.150d169a.chunk.css.map": "/TSG_portal/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.8bd60ff3.chunk.css.map": "/TSG_portal/static/css/main.8bd60ff3.chunk.css.map",
-    "static/js/2.f6f5a8ff.chunk.js.LICENSE.txt": "/TSG_portal/static/js/2.f6f5a8ff.chunk.js.LICENSE.txt"
+    "static/css/main.0c1a7e5c.chunk.css.map": "/TSG_portal/static/css/main.0c1a7e5c.chunk.css.map",
+    "static/js/2.ce1b69e0.chunk.js.LICENSE.txt": "/TSG_portal/static/js/2.ce1b69e0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7338a362.js",
     "static/css/2.150d169a.chunk.css",
-    "static/js/2.f6f5a8ff.chunk.js",
-    "static/css/main.8bd60ff3.chunk.css",
-    "static/js/main.04161629.chunk.js"
+    "static/js/2.ce1b69e0.chunk.js",
+    "static/css/main.0c1a7e5c.chunk.css",
+    "static/js/main.7c57b174.chunk.js"
   ]
 }
